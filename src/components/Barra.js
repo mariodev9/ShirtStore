@@ -1,9 +1,8 @@
-import React from "react";
-import Contexto from "../context/Context";
 import React, { useContext } from "react";
-const { user } = useContext(Contexto);
+import Contexto from "../context/Context";
 
 export const Barra = () => {
+  const { user } = useContext(Contexto);
   return (
     <div>
       <h1>NAVBAR </h1>
