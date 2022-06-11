@@ -1,0 +1,19 @@
+.navbar {
+    padding: 10px 50px;
+}
+
+.navbar-collapse{
+    justify-content: end;
+}
+
+.navbar-nav{
+    align-items:center ;
+}
+
+.dropdown {
+    text-align: center !important;
+}
+
+.dropdown-menu {
+    background-color: crimson;
+}

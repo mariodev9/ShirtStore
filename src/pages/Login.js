@@ -1,13 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import firebaseApp from "../firebase/credentials";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
 } from "firebase/auth";
-import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
-import Contexto from "../context/Context";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
@@ -15,38 +13,6 @@ const firestore = getFirestore(firebaseApp);
 export const Login = () => {
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState("");
-  const { user, setNombre, nombre, setUsuario } = useContext(Contexto);
-
-  // Dado un USER ID : consulta a la BASE DE DATOS sobre ese usuario y obtiene el ROL
-  async function getRole(uid) {
-    const docuRef = doc(firestore, `users/${uid}`);
-    const dataUser = await getDoc(docuRef);
-    const role = dataUser.data().role;
-    return role;
-  }
-
-  // guarda USUARIO y ROL en el estado
-  function setUserAndRole(firebaseUser) {
-    getRole(firebaseUser.uid).then((role) => {
-      const userData = {
-        uid: firebaseUser.uid,
-        name: firebaseUser.email,
-        role: role,
-      };
-      console.log(userData, "LA DATA A ACTUALIZAR");
-      // setuserdata
-    });
-  }
-
-  onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser) {
-      if (!user) {
-        setUserAndRole(firebaseUser);
-      }
-    } else {
-      // set user null
-    }
-  });
 
   // -------------------------------------------------
 
@@ -65,6 +31,8 @@ export const Login = () => {
           setError("Operation not allowed.");
         } else if (error.code === "auth/weak-password") {
           setError("The password is too weak.");
+        } else {
+          console.log("error");
         }
         setTimeout(() => {
           setError("");
@@ -76,7 +44,7 @@ export const Login = () => {
 
   // Init session with AUTH
   function signIn(auth, email, password) {
-    if (auth && email && password) {
+    if ((auth, email, password)) {
       signInWithEmailAndPassword(auth, email, password)
         .then(() => {
           window.location.replace("/Home");
@@ -100,6 +68,8 @@ export const Login = () => {
     e.preventDefault();
 
     const email = e.target.elements.email.value;
+    // al logear no lee username xq el campo no existe
+
     const password = e.target.elements.password.value;
     const role = e.target.elements.role.value;
 
@@ -113,8 +83,12 @@ export const Login = () => {
   return (
     <div>
       <h1>{isRegister ? "Registrate" : "Inicia sesion"}</h1>
-      <h2>{nombre}</h2>
       <form onSubmit={HandleSubmit}>
+        {/* <label>
+          Username:
+          <input type="text" name="username" id="username" />
+        </label> */}
+
         <label>
           Email:
           <input type="email" name="email" id="email" />
@@ -145,8 +119,6 @@ export const Login = () => {
       <button onClick={() => setIsRegister(!isRegister)}>
         {isRegister ? "Ya tengo cuenta" : "Quiero registrarme"}
       </button>
-
-      <button onClick={() => setNombre("pepe")}>APRETA</button>
     </div>
   );
 };
