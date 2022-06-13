@@ -68,8 +68,6 @@ export const Login = () => {
     e.preventDefault();
 
     const email = e.target.elements.email.value;
-    // al logear no lee username xq el campo no existe
-
     const password = e.target.elements.password.value;
     const role = e.target.elements.role.value;
 
@@ -84,11 +82,6 @@ export const Login = () => {
     <div>
       <h1>{isRegister ? "Registrate" : "Inicia sesion"}</h1>
       <form onSubmit={HandleSubmit}>
-        {/* <label>
-          Username:
-          <input type="text" name="username" id="username" />
-        </label> */}
-
         <label>
           Email:
           <input type="email" name="email" id="email" />
@@ -100,7 +93,7 @@ export const Login = () => {
 
         <label>
           Role:
-          <select name="Role" id="role">
+          <select name="role" id="role">
             <option value="user">User</option>
             <option value="admin">Admin</option>
           </select>

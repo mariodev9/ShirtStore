@@ -54,16 +54,10 @@ export const Nav = () => {
               </Link>
             </li>
             <li class="nav-item active">
-              <Link className="nav-link" to={"/Home"}>
+              <Link className="nav-link" to={"/About"}>
                 About
               </Link>
             </li>
-            {/* <li class="nav-item">
-              <Link className="nav-link" to={"/Admin"}>
-                Admin
-              </Link>
-            </li> */}
-
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"

@@ -6,11 +6,13 @@ import {
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
+import UserContext from "./context/UserContext";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import UserContext from "./context/UserContext";
+import { About } from "./pages/About";
 import { Adminview } from "./pages/Adminview";
 import PrivateRoute from "./router/PrivateRoute";
+import { Layout } from "./components/Layout/Layout";
 
 function App() {
   return (
@@ -20,12 +22,30 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to={"/login"} />} />
             <Route path="/Login" element={<Login />} />
-            <Route path="/Home" element={<Home />} />
+            <Route
+              path="/Home"
+              element={
+                <Layout>
+                  <Home />
+                </Layout>
+              }
+            />
+            <Route
+              path="/About"
+              element={
+                <Layout>
+                  <About />
+                </Layout>
+              }
+            />
+
             <Route
               path="/Admin"
               element={
                 <PrivateRoute>
-                  <Adminview />
+                  <Layout>
+                    <Adminview />
+                  </Layout>
                 </PrivateRoute>
               }
             />

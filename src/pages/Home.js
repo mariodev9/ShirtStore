@@ -12,7 +12,6 @@ export const Home = () => {
   return (
     <>
       <div>
-        <Nav />
         <h1>HOME GENERAL</h1>
       </div>
     </>
