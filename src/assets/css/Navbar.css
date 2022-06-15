@@ -1,6 +1,9 @@
-.navbar {
-    padding: 10px 50px;
+a {
+    text-decoration: none !important;
+    color: black !important;
 }
+
+
 
 .navbar-collapse{
     justify-content: end;
@@ -15,5 +18,11 @@
 }
 
 .dropdown-menu {
-    background-color: crimson;
+    background-color: rgb(254, 13, 66);
+}
+
+@media only screen and (min-width: 576px){
+    .navbar {
+        padding: 10px 50px 0px 70px;
+    }
 }

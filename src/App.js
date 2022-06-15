@@ -43,9 +43,7 @@ function App() {
               path="/Admin"
               element={
                 <PrivateRoute>
-                  <Layout>
-                    <Adminview />
-                  </Layout>
+                  <Adminview />
                 </PrivateRoute>
               }
             />
