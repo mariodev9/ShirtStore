@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useEffect } from "react";
-import { Route, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Contexto from "../context/Context";
 
 function PrivateRoute({ children }) {
@@ -14,7 +14,6 @@ function PrivateRoute({ children }) {
       setLoading(false);
       if (user.role === "admin") {
         setAdmin(true);
-        console.log("SOS ADMINISTRADOR");
       }
     } else {
       setLoading(false);

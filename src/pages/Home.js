@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import firebaseApp from "../firebase/credentials";
-import { Nav } from "../components/Nav";
+import React from "react";
+// import firebaseApp from "../firebase/credentials";
+// import { Nav } from "../components/Nav";
 // user cuando traiga info
 // import { getFirestore } from "firebase/firestore";
 
