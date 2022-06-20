@@ -74,12 +74,13 @@ export const ShirtForm = () => {
         type: type,
         img: img,
       });
-      console.log(teamname, season, type, img);
-      console.log("documento creado con id", docRef.id);
+      // console.log(teamname, season, type, img);
+      // console.log("documento creado con id", docRef.id);
       notifySuccess();
     }
   };
 
+  // Notifications
   const notifyError = () => toast.error("Todos los campos son requeridos!");
   const notifySuccess = () => toast.success("Agregado con exito!");
 
@@ -127,8 +128,8 @@ export const ShirtForm = () => {
               }}
             >
               <option value="">Select type</option>
-              <option value="home">Home</option>
-              <option value="away">Away</option>
+              <option value="Home">Home</option>
+              <option value="Away">Away</option>
             </Form.Select>
 
             <Form.Group className="mb-3 ">
@@ -153,10 +154,12 @@ export const ShirtForm = () => {
         <div className="col-md-6">
           <h2 className="title">Preview</h2>
           <div className="preview">
-            {img && <img className="imagenfire" src={img} alt="" />}
-            <h3>
+            <div className="container-image">
+              {img && <img className="imagenfire" src={img} alt="" />}
+            </div>
+            <p className="description">
               {teamname} {season}
-            </h3>
+            </p>
           </div>
         </div>
       </div>
