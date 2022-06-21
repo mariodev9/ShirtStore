@@ -87,7 +87,7 @@ export const ShirtForm = () => {
 
   return (
     <div className="container">
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center" theme="dark" />
 
       <div className="row">
         <div className="col-md-6">
@@ -143,13 +143,6 @@ export const ShirtForm = () => {
                 }}
               />
             </Form.Group>
-
-            {/* <input
-              className="add-button"
-              disabled={per != null && per < 100}
-              type="submit"
-              value="Agregar"
-            /> */}
 
             <ButtonShirt
               type="submit"

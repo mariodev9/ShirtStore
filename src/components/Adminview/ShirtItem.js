@@ -1,35 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row, Modal, Button } from "react-bootstrap";
 import { ButtonShirt } from "../common/ButtonShirt";
 import "../../assets/css/ShirtItem.css";
 import { getFirestore, doc, deleteDoc } from "firebase/firestore";
 import firebaseApp from "../../firebase/credentials";
-import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export const ShirtItem = ({ team, season, type, id }) => {
+export const ShirtItem = ({ team, season, type, id, img, DeleteShirt }) => {
   const firestore = getFirestore(firebaseApp);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const deleteShirt = (id) => {
-    console.log("se elimino shirt", id);
-
-    deleteDoc(doc(firestore, "shirts", id));
-  };
+  // const deleteShirt = async (id) => {
+  //   deleteDoc(doc(firestore, "shirts", id)).then(notifySuccess());
+  // };
 
   const editShirt = () => {
     console.log("se edito", id);
   };
 
+  const notifySuccess = () =>
+    toast.success("Se elimino con exito! Actualiza para ver los cambios");
+  const notifyError = () => toast.error("Ocurrio un error");
+
   return (
     <>
+      <ToastContainer position="top-center" theme="dark" />
+
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>{team}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+        <Modal.Body>
+          <p>{season}</p>
+          <p>{type}</p>
+
+          <img src={img} alt="" srcset="" />
+        </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
@@ -67,7 +77,9 @@ export const ShirtItem = ({ team, season, type, id }) => {
         </Col>
         <Col>
           <ButtonShirt
-            onClick={() => deleteShirt(id)}
+            onClick={() => {
+              DeleteShirt();
+            }}
             msg={"X"}
             color={"#f0003c"}
             shadow={"#650626"}

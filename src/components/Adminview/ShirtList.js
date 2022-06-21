@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import firebaseApp from "../../firebase/credentials";
 import { ShirtItem } from "./ShirtItem";
 import { Container } from "react-bootstrap";
@@ -8,21 +14,27 @@ export const ShirtList = () => {
   const firestore = getFirestore(firebaseApp);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let list = [];
-      try {
-        const querySnapshot = await getDocs(collection(firestore, "shirts"));
-        querySnapshot.forEach((doc) => {
-          let dataShirt = doc.data();
-          dataShirt.id = doc.id;
-          list.push(dataShirt);
-        });
-      } catch (error) {}
-      setData(list);
-    };
+  const deleteShirt = async (id) => {
+    deleteDoc(doc(firestore, "shirts", id));
     fetchData();
-  }, []);
+  };
+
+  const fetchData = async () => {
+    let list = [];
+    try {
+      const querySnapshot = await getDocs(collection(firestore, "shirts"));
+      querySnapshot.forEach((doc) => {
+        let dataShirt = doc.data();
+        dataShirt.id = doc.id;
+        list.push(dataShirt);
+      });
+    } catch (error) {}
+    setData(list);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [data]);
 
   return (
     <Container>
@@ -34,6 +46,8 @@ export const ShirtList = () => {
             team={shirt.team}
             season={shirt.season}
             type={shirt.type}
+            img={shirt.img}
+            DeleteShirt={() => deleteShirt(shirt.id)}
           />
         ))}
       </Container>
