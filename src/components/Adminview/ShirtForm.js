@@ -12,6 +12,7 @@ import { Form } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ButtonShirt } from "../common/ButtonShirt";
 
 export const ShirtForm = () => {
   const firestore = getFirestore(firebaseApp);
@@ -143,11 +144,18 @@ export const ShirtForm = () => {
               />
             </Form.Group>
 
-            <input
+            {/* <input
               className="add-button"
               disabled={per != null && per < 100}
               type="submit"
               value="Agregar"
+            /> */}
+
+            <ButtonShirt
+              type="submit"
+              msg={"Agregar"}
+              color={"#00C897"}
+              shadow={"#146356"}
             />
           </form>
         </div>

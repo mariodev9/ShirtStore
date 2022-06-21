@@ -14,8 +14,9 @@ export const ShirtList = () => {
       try {
         const querySnapshot = await getDocs(collection(firestore, "shirts"));
         querySnapshot.forEach((doc) => {
-          console.log(doc.id, " => ", doc.data());
-          list.push(doc.data());
+          let dataShirt = doc.data();
+          dataShirt.id = doc.id;
+          list.push(dataShirt);
         });
       } catch (error) {}
       setData(list);
@@ -29,6 +30,7 @@ export const ShirtList = () => {
       <Container fluid className="shirts-container">
         {data.map((shirt) => (
           <ShirtItem
+            id={shirt.id}
             team={shirt.team}
             season={shirt.season}
             type={shirt.type}

@@ -70,8 +70,6 @@ p {
 .container-image {
     height: 280px;
     width: 280px;
-    border: solid 2px black;
-    border-radius: 15px;
 }
 
 .description {
