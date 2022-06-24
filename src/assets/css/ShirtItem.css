@@ -1,8 +1,9 @@
 .item-container {
     margin: 25px 0px;
     border-radius: 10px;
-    background-color: #d1d0d0;
-    box-shadow: 7px 4px 0px rgba(0, 0, 0, 0.164);
+    /* background-color: #d1d0d0; */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.164);
     align-items: center;
     align-self: center;
 

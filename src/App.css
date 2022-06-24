@@ -8,3 +8,7 @@ h1{
 h2, a, input {
   font-family: 'DM Mono', monospace;
 }
+
+body {
+  background-color: #cecece;
+}
