@@ -1,54 +1,61 @@
 import React, { useState } from "react";
-import "../assets/css/Adminview.css";
+import "../assets/css/Adminview.scss";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import SideNav, { NavItem, NavIcon, NavText } from "@trendmicro/react-sidenav";
-import { Link } from "react-router-dom";
 import { ShirtForm } from "../components/Adminview/ShirtForm";
 import { ShirtList } from "../components/Adminview/ShirtList";
 import { NewsList } from "../components/Adminview/NewsList";
+import { Dashboard } from "../components/Adminview/Dashboard/Dashboard";
+//
+import "../assets/css/Sidenav.css";
+import toggle from "../assets/statics/toggle-icon.png";
+import close from "../assets/statics/close-icon.png";
+import shirt from "../assets/statics/shirt-icon.png";
+import {
+  Container,
+  Dropdown,
+  DropdownButton,
+  ButtonGroup,
+} from "react-bootstrap";
 
 export const Adminview = () => {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState("add");
 
   return (
     <>
-      <div className="asd">
-        <SideNav
-          onSelect={(active) => {
-            setSelected(active);
-          }}
-        >
-          <SideNav.Toggle />
-          <SideNav.Nav defaultSelected="home">
-            <NavItem eventKey="home">
-              <NavIcon>
-                <Link to={"/Home"}>Home </Link>
-              </NavIcon>
-              <NavText>Home</NavText>
-            </NavItem>
-            <NavItem eventKey="add">
-              <NavIcon> icon</NavIcon>
-              <NavText>Add</NavText>
-            </NavItem>
-            <NavItem eventKey="shirts">
-              <NavIcon> icon</NavIcon>
-              <NavText>Shirts</NavText>
-            </NavItem>
-            <NavItem eventKey="news">
-              <NavIcon> icon</NavIcon>
-              <NavText>News</NavText>
-            </NavItem>
-          </SideNav.Nav>
-        </SideNav>
-
+      <Container>
         {/* FORM -------------------------------------------- */}
-        <h1 className="admin-title">Shirt Store ADMIN</h1>
+        <div className="header-admin">
+          <h1 className="admin-title">Shirt Store ADMIN</h1>
+          <>
+            <DropdownButton
+              as={ButtonGroup}
+              id={`dropdown-variants-primary`}
+              variant="primary"
+              title="Menu"
+              size="sm"
+            >
+              <Dropdown.Item eventKey="1" onClick={() => setSelected("shirts")}>
+                Shirts
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="2" onClick={() => setSelected("news")}>
+                News
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="3" onClick={() => setSelected("add")}>
+                add
+              </Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">Home</Dropdown.Item>
+              <Dropdown.Item eventKey="4">Log out</Dropdown.Item>
+            </DropdownButton>
+          </>
+        </div>
         <div className="">
           {selected === "add" && <ShirtForm />}
           {selected === "shirts" && <ShirtList />}
           {selected === "news" && <NewsList />}
+          {selected === "dashboard" && <Dashboard />}
         </div>
-      </div>
+      </Container>
     </>
   );
 };

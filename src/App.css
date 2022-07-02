@@ -5,7 +5,7 @@ h1{
   font-family: 'DotGothic16', sans-serif;
 }
 
-h2, a, input {
+h2, a, input, span, p {
   font-family: 'DM Mono', monospace;
 }
 

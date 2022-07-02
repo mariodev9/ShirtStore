@@ -8,7 +8,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import { Form } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -88,13 +88,12 @@ export const ShirtForm = () => {
   return (
     <div className="container">
       <ToastContainer position="top-center" theme="dark" />
-
-      <div className="row">
-        <div className="col-md-6">
+      <Row>
+        <Col md={6}>
           <h2 className="title">Add a shirt</h2>
 
           <form className="shirts-form" onSubmit={handleAdd}>
-            <FloatingLabel label="Team Shirt" className="mb-3 ">
+            <FloatingLabel label="Team Shirt" className="mb-3">
               <Form.Control
                 className="shirt-input"
                 value={teamname}
@@ -107,7 +106,7 @@ export const ShirtForm = () => {
                 placeholder="Juventus"
               />
             </FloatingLabel>
-            <FloatingLabel label="Season" className="mb-3 hola">
+            <FloatingLabel label="Season" className="mb-3">
               <Form.Control
                 className="shirt-input"
                 value={season}
@@ -133,7 +132,7 @@ export const ShirtForm = () => {
               <option value="Away">Away</option>
             </Form.Select>
 
-            <Form.Group className="mb-3 ">
+            <Form.Group className="mb-3">
               <Form.Control
                 className="shirt-input"
                 type="file"
@@ -151,19 +150,19 @@ export const ShirtForm = () => {
               shadow={"#146356"}
             />
           </form>
-        </div>
-        <div className="col-md-6">
+        </Col>
+        <Col md={6}>
           <h2 className="title">Preview</h2>
           <div className="preview">
             <div className="container-image">
-              {img && <img className="imagenfire" src={img} alt="" />}
+              {img && <img className="preview-image" src={img} alt="" />}
             </div>
             <p className="description">
               {teamname} {season}
             </p>
           </div>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 };

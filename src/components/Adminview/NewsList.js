@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { NewItem } from "./NewItem";
 import {
   getFirestore,
@@ -24,7 +24,6 @@ export const NewsList = () => {
         dataShirt.id = doc.id;
         list.push(dataShirt);
       });
-      console.log("La lista", list);
     } catch (error) {}
     setData(list);
   };
@@ -34,15 +33,17 @@ export const NewsList = () => {
   }, []);
 
   return (
-    <Container>
-      <h1 className="title">News list</h1>
-      <Container fluid className="shirts-container">
-        <Row>
-          {data.map((item) => (
-            <NewItem title={item.title} />
-          ))}
-        </Row>
+    <>
+      <Container>
+        <h1 className="title">News list</h1>
+        <Container fluid>
+          <Row>
+            {data.map((item) => (
+              <NewItem title={item.title} img={item.img} />
+            ))}
+          </Row>
+        </Container>
       </Container>
-    </Container>
+    </>
   );
 };

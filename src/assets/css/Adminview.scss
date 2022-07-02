@@ -1,0 +1,137 @@
+// General Class
+.title {
+    text-align: center;
+    margin: 30px 0px;
+}
+// 
+
+// Header
+.header-admin {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;        
+    border-bottom: 2px solid;
+    padding: 5px;
+    margin-bottom: 70px;
+
+
+    .admin-title {
+        text-align: center;
+        padding-bottom: 15px;
+        margin-top: 20px;
+        font-family: 'DM Mono', monospace;
+        font-weight: 900;
+        font-size: 2rem;
+    }
+    
+    .btn {
+        margin-top: 20px;
+        height: 40px;
+        font-family: "DM Mono";
+        font-weight: 400;
+    }
+
+}
+
+// ADD SECTION (CHANGE FOR MODAL)
+.shirts-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .shirt-input {
+        margin: 10px 0px;
+        box-shadow: 0px 4px 0px rgb(70, 70, 70);
+        border: none;
+        border-radius: 10px;
+    }
+
+    .form-select {
+        width: auto;
+    }
+
+}
+
+
+
+
+
+.preview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .container-image {
+        height: 280px;
+        width: 280px;
+    
+        .preview-image {
+            margin: 40px 0px;
+            width: 280px;
+            height: 220px;
+        }
+    }
+
+}
+
+
+
+
+.description {
+    font-size: 25px;
+    margin-top: 10px;
+    
+}
+
+/* DASHBOARD */
+
+.centrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shirts-info{
+    border-radius: 7px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 6px 0px rgba(0, 0, 0, 0.164);
+    margin: 20px;
+    justify-content: space-around;
+    cursor: pointer;
+}
+
+
+.dashboard-header-icon {
+    margin: 20px;
+
+}
+
+.digit{
+    font-weight: 700;
+    margin: 15px  0px 0px;
+    font-size: x-large;
+}
+
+.last-info {
+    font-weight: 500;
+    color: #828DA9;
+}
+
+
+// SHIRT SECTION
+
+.header-shirts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .add-container {
+        padding-right: 25px;
+    }
+    
+}
+
+

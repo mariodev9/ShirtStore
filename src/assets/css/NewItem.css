@@ -1,0 +1,20 @@
+ .new-container{
+    border-radius: 9px;
+}
+
+.new-container img {
+    margin: 5px;
+    width: 100%;
+}
+
+.card-new {
+    box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.164);
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+}
+
+.new-title {
+    height: 50px ;
+    /* background-color: blueviolet; */
+    overflow: hidden;
+}

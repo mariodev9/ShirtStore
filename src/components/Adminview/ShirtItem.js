@@ -58,7 +58,7 @@ export const ShirtItem = ({ team, season, type, id, img, DeleteShirt }) => {
       </Modal>
 
       <Row className="item-container">
-        <Col xs={4}>
+        <Col xs={3}>
           <p>{team}</p>
         </Col>
         <Col>
@@ -80,7 +80,7 @@ export const ShirtItem = ({ team, season, type, id, img, DeleteShirt }) => {
             onClick={() => {
               DeleteShirt();
             }}
-            msg={"X"}
+            msg={"Delete"}
             color={"#f0003c"}
             shadow={"#650626"}
           />

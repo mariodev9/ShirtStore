@@ -9,6 +9,7 @@ import {
 import firebaseApp from "../../firebase/credentials";
 import { ShirtItem } from "./ShirtItem";
 import { Container } from "react-bootstrap";
+import { ButtonShirt } from "../common/ButtonShirt";
 
 export const ShirtList = () => {
   const firestore = getFirestore(firebaseApp);
@@ -38,8 +39,13 @@ export const ShirtList = () => {
 
   return (
     <Container>
-      <h1 className="title">ShirtList</h1>
-      <Container fluid className="shirts-container">
+      <div className="header-shirts">
+        <h1 className="title">Shirt list</h1>
+        <div className="add-container ">
+          <ButtonShirt msg={"Add Shirt"} color={"#00C897"} shadow={"#146356"} />
+        </div>
+      </div>
+      <Container fluid>
         {data.map((shirt) => (
           <ShirtItem
             id={shirt.id}
